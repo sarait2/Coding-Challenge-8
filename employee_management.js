@@ -16,3 +16,24 @@ class Employee {
 const employee1 = new Employee("John Doe", 50000, "Developer", "Engineering");
 console.log(employee1.getDetails());
 //Create Employee class with properties and methods
+
+//Task 2 - Create a Department Class
+class Department {
+    constructor(name) {
+        this.name = name;
+        this.employees = [];
+    }
+
+    addEmployee(employee) {
+        if (employee instanceof Employee) {
+            this.employees.push(employee);
+        } else {
+            throw new Error("Invalid employee object");
+        }
+    }
+
+    getDepartmentSalary() {
+        return this.employees.reduce((totalSalary, employee) => totalSalary + employee.salary, 0);
+    }
+}
+// Create Department class to manage employees and calculate salary
