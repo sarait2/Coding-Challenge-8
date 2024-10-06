@@ -37,3 +37,25 @@ class Department {
     }
 }
 // Create Department class to manage employees and calculate salary
+
+//Task 3 - Create a Manager Class that Inherits from Employee
+class Manager extends Employee {
+    constructor(name, salary, position, department, bonus) {
+        super(name, salary, position, department); // Call the parent class (Employee) constructor
+        this.bonus = bonus;
+    }
+
+    getDetails() {
+        // Override getDetails() to include the bonus
+        return `${this.name} works as a ${this.position} in the ${this.department} department, earns $${this.salary} in addition to a bonus of $${this.bonus}.`;
+    }
+}
+
+// Example usage:
+const manager = new Manager("John Doe", 50000, "Manager", "Engineering", 8000);
+console.log(manager.getDetails());
+//Create Manager class with inheritance from Employee
+
+
+
+
