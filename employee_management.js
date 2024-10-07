@@ -28,7 +28,7 @@ class Department {
         if (employee instanceof Employee) {
             this.employees.push(employee);
         } else {
-             Error("Invalid");
+             Error("Invalid object");
         }
     }
 
@@ -94,4 +94,62 @@ class Department {
     }
 }
 //Handle bonuses in the department salary calculation
+
+// Task 5 - Create and Manage Departments and Employees
+
+    // Method to calculate total salary of all employees in the department
+    getDepartmentSalary() {
+        return this.employees.reduce((totalSalary, employee) => totalSalary + employee.salary, 0);
+    }
+
+    // Method to calculate total salary including bonuses for managers
+    calculateTotalSalaryWithBonus() {
+        return this.employees.reduce((totalSalary, employee) => {
+            if (employee instanceof Manager) {
+                return totalSalary + employee.salary + employee.bonus; // Add salary and bonus for managers
+            }
+            return totalSalary + employee.salary; // Add salary for regular employees
+        }, 0);
+    }
+// Create departments
+
+const engineering = new Department("Engineering");
+
+const marketing = new Department("Marketing");
+
+
+
+// Create employees
+
+const alice = new Employee("Alice", 80000, "Developer", "Engineering");
+
+const bob = new Employee("Bob", 75000, "Designer", "Marketing");
+
+const charlie = new Manager("Charlie", 120000, "Engineering Manager", "Engineering", 20000);
+
+const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
+
+
+
+// Add employees to departments
+
+engineering.addEmployee(alice);
+
+engineering.addEmployee(charlie);
+
+marketing.addEmployee(bob);
+
+marketing.addEmployee(diana);
+
+
+// Calculate total salary for each department
+
+console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`);
+
+console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
+
+console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
+
+console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
+//Create and manage departments and employees
 
